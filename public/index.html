@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Today — Hugo Todo Demo</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <span class="eyebrow">A LITTLE FOCUS GOES A LONG WAY</span>
+        <h1>Make room for <em>today.</em></h1>
+        <p>A simple list for the things that matter.</p>
+      </header>
+      <section class="notebook" aria-label="Your tasks">
+        <form id="task-form">
+          <label class="sr-only" for="task-input">New task</label>
+          <input id="task-input" placeholder="What needs doing?" maxlength="200" required autocomplete="off" />
+          <button class="add" type="submit">Add task <span aria-hidden="true">↗</span></button>
+        </form>
+        <nav aria-label="Filter tasks">
+          <button type="button" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" data-filter="active" aria-pressed="false">To do</button>
+          <button type="button" data-filter="completed" aria-pressed="false">Done</button>
+        </nav>
+        <ul id="task-list"></ul>
+        <p id="empty">A clear page. Add your first task.</p>
+        <footer>
+          <span id="count" role="status">0 tasks left</span>
+          <button id="clear-completed" type="button">Clear completed</button>
+        </footer>
+      </section>
+      <p class="footnote">Saved in this browser. Built for the Hugo contribution demo.</p>
+    </main>
+  </body>
+</html>
