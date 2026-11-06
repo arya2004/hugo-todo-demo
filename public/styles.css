@@ -1,167 +1,254 @@
+
 :root {
   font-family: system-ui, sans-serif;
   color: #203e36;
   background: #f5f3eb;
+
+  --primary: #234c3e;
+  --primary-hover: #30634f;
+  --border: #dddcd0;
+  --muted: #718078;
+  --surface: #fffefa;
+  --radius: 10px;
 }
-* {
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
+  min-height: 100vh;
 }
+
 main {
   max-width: 760px;
   margin: 9vh auto;
   padding: 24px;
 }
+
 .eyebrow {
+  color: var(--primary);
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: .17em;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
 }
+
 h1 {
-  font-size: clamp(38px, 7vw, 64px);
-  letter-spacing: -.06em;
   margin: 18px 0;
+  font-size: clamp(38px, 7vw, 64px);
+  letter-spacing: -0.06em;
   line-height: 1.05;
 }
+
 h1 em {
   font-family: Georgia, serif;
   font-weight: 400;
 }
-header p, .footnote {
-  color: #718078;
+
+header p,
+.footnote {
+  color: var(--muted);
+  line-height: 1.6;
 }
+
 .notebook {
-  background: #fffefa;
-  border: 1px solid #dddcd0;
-  border-radius: 16px;
   margin-top: 36px;
   padding: 24px;
-  box-shadow: 0 12px 40px #203e3608;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px #203e360d;
 }
+
 form {
   display: flex;
   gap: 10px;
 }
+
 #task-input {
   flex: 1;
   min-width: 0;
-  border: 1px solid #dddcd0;
-  border-radius: 8px;
   padding: 14px;
   font: inherit;
   background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.2s ease;
 }
+
+#task-input:focus {
+  border-color: var(--primary);
+}
+
 button {
-  cursor: pointer;
+  padding: 10px 14px;
   font: inherit;
   color: inherit;
-  border: 0;
-  border-radius: 8px;
   background: transparent;
-  padding: 10px 14px;
+  border: 0;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
+
 button:disabled {
-  opacity: .4;
-  cursor: default;
+  opacity: 0.4;
+  cursor: not-allowed;
 }
-button:focus-visible, input:focus-visible {
+
+button:focus-visible,
+input:focus-visible {
   outline: 2px solid #37775f;
   outline-offset: 3px;
 }
+
 .add {
-  background: #234c3e;
-  color: white;
+  color: #fff;
+  background: var(--primary);
+  font-weight: 600;
 }
+
+.add:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+
 nav {
   display: flex;
+  flex-wrap: wrap;
   gap: 5px;
   margin: 22px 0 8px;
 }
+
 nav button {
   font-size: 13px;
 }
+
+nav button:hover {
+  background: #f0f2ed;
+}
+
 nav [aria-pressed="true"] {
   background: #e8eee7;
   font-weight: 600;
 }
+
 ul {
-  list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  list-style: none;
 }
+
 li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #eeeee5;
   min-height: 62px;
   gap: 12px;
+  border-bottom: 1px solid #eeeee5;
 }
+
+li:last-child {
+  border-bottom: 0;
+}
+
 li label {
   display: flex;
+  flex: 1;
   align-items: center;
   gap: 14px;
-  cursor: pointer;
-  flex: 1;
   overflow-wrap: anywhere;
+  cursor: pointer;
 }
+
 li input {
+  flex-shrink: 0;
   width: 19px;
   height: 19px;
   accent-color: #37775f;
-  flex-shrink: 0;
+  cursor: pointer;
 }
+
 .done span {
-  text-decoration: line-through;
   color: #89958d;
+  text-decoration: line-through;
 }
+
 .delete {
   color: #8d968d;
   font-size: 24px;
 }
+
 .delete:hover {
-  background: #f8e9e3;
   color: #974d3d;
+  background: #f8e9e3;
 }
+
 #empty {
   padding: 32px 0;
-  text-align: center;
   color: #89958d;
+  text-align: center;
 }
+
 footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
   margin-top: 18px;
+  color: var(--muted);
   font-size: 12px;
-  color: #718078;
 }
+
 .footnote {
-  text-align: center;
-  font-size: 12px;
   margin-top: 24px;
+  font-size: 12px;
+  text-align: center;
 }
+
 .sr-only {
   position: absolute;
   width: 1px;
   height: 1px;
   padding: 0;
+  margin: -1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
+  border: 0;
 }
+
+[hidden] {
+  display: none !important;
+}
+
 @media (max-width: 480px) {
   main {
     margin: 4vh auto;
     padding: 16px;
   }
+
   .notebook {
     padding: 16px;
   }
+
   .add {
     padding: 10px;
+  }
+
+  footer {
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 }
