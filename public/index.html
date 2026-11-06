@@ -1,38 +1,119 @@
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Today — Hugo Todo Demo</title>
+    <meta name="theme-color" content="#ffffff" />
+    <meta
+      name="description"
+      content="Hugo Todo — a simple, distraction-free space to organize your day and get things done."
+    />
+
+    <title>Hugo Todo — Your day, organized.</title>
+
     <link rel="stylesheet" href="/styles.css" />
     <script src="/app.js" defer></script>
   </head>
+
   <body>
     <main>
       <header>
-        <span class="eyebrow">A LITTLE FOCUS GOES A LONG WAY</span>
-        <h1>Make room for <em>today.</em></h1>
-        <p>A simple list for the things that matter.</p>
+        <span class="eyebrow">HUGO / YOUR PERSONAL WORKSPACE</span>
+
+        <h1>One thing <em>at a time.</em></h1>
+
+        <p>
+          Big plans start with small steps.
+          Keep track of what matters and make today count.
+        </p>
       </header>
-      <section class="notebook" aria-label="Your tasks">
-        <form id="task-form">
-          <label class="sr-only" for="task-input">New task</label>
-          <input id="task-input" placeholder="What needs doing?" maxlength="200" required autocomplete="off" />
-          <button class="add" type="submit">Add task <span aria-hidden="true">↗</span></button>
+
+      <section class="notebook" aria-labelledby="tasks-heading">
+        <header class="notebook-header">
+          <div>
+            <span class="eyebrow">YOUR WORKSPACE</span>
+            <h2 id="tasks-heading">Today's priorities</h2>
+            <p>Everything you need to get done, all in one place.</p>
+          </div>
+        </header>
+
+        <form id="task-form" aria-label="Create a task">
+          <label class="sr-only" for="task-input">
+            What would you like to accomplish?
+          </label>
+
+          <input
+            id="task-input"
+            name="task"
+            type="text"
+            placeholder="Add something to your list..."
+            maxlength="200"
+            required
+            autocomplete="off"
+            aria-describedby="task-hint"
+          />
+
+          <button class="add" type="submit">
+            Add task
+            <span aria-hidden="true">↗</span>
+          </button>
         </form>
+
+        <p id="task-hint" class="sr-only">
+          Type a task and press Enter to add it to your list.
+        </p>
+
         <nav aria-label="Filter tasks">
-          <button type="button" data-filter="all" aria-pressed="true">All</button>
-          <button type="button" data-filter="active" aria-pressed="false">To do</button>
-          <button type="button" data-filter="completed" aria-pressed="false">Done</button>
+          <button
+            type="button"
+            data-filter="all"
+            aria-pressed="true"
+          >
+            All tasks
+          </button>
+
+          <button
+            type="button"
+            data-filter="active"
+            aria-pressed="false"
+          >
+            Upcoming
+          </button>
+
+          <button
+            type="button"
+            data-filter="completed"
+            aria-pressed="false"
+          >
+            Completed
+          </button>
         </nav>
-        <ul id="task-list"></ul>
-        <p id="empty">A clear page. Add your first task.</p>
+
+        <div class="task-content">
+          <ul id="task-list" aria-label="Your task list"></ul>
+
+          <p id="empty">
+            Nothing on your list yet.
+            Start with one small thing.
+          </p>
+        </div>
+
         <footer>
-          <span id="count" role="status">0 tasks left</span>
-          <button id="clear-completed" type="button">Clear completed</button>
+          <span id="count" role="status" aria-live="polite">
+            0 tasks left
+          </span>
+
+          <button id="clear-completed" type="button">
+            Clear completed
+          </button>
         </footer>
       </section>
-      <p class="footnote">Saved in this browser. Built for the Hugo contribution demo.</p>
+
+      <p class="footnote">
+        Made for getting things done.
+        Your tasks stay in this browser.
+      </p>
     </main>
   </body>
 </html>
